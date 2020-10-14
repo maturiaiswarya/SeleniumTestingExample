@@ -1,0 +1,99 @@
+Selenese script - Selenium IDE code - converts to java code if we copy paste
+
+Architecture - 
+
+1.languages (java, ruby,python)
+
+2.Web driver API
+
+3.drivers(firefox, chrome)
+
+ALM tool :
+1.dashbo ard(Analysis view and dashboard view) - execution graphs
+2.Management(releases,libraries)
+3.Requirement(requirements,business models)
+4.testing(test resources,components,test PLAN, LAB, runs)
+5.Defects 
+
+
+Selenium IDE :(alt+ctrl+s)
+(record and playback testing )
+1. firefox plugin
+2.Record the steps on browser - it will create selense -Play(record and playback testing)
+3.we can play currect test case or play multiple test cases and we can choose the speed too
+4. Selenese is used for selenium tool
+5.goes to the first one on the page - h3 > a
+6.we can insert new commands and comments
+comamnd -> clickAndWait
+target - > link= Jetbrains*
+7.If we click on find it will search for the element
+8 assert - fails test fails and verify - fails but just logs the fail can have multiple verify values
+9 multiple test cases become a test suite
+10.If we save it, will be html file for the table generated
+11. We can add breakpoints in it too
+12.Base url is given in the text box on the top
+
+
+Webdriver :(API used to handle the web browser with test script)
+
+
+1.Add the dependencies in maven 
+2.create a class file in java/main/src
+3.For fire fox driver:  
+WebDriver d=new FireFoxDriver();
+d.get(url);
+4.It will throw an error if we don't give gecko driver - in the error you can see where to install in the first line in the last 
+System.setProperty("webdriver.gecko.driver", local url) -G:/eclipse workspace/geckodriver.exe
+5. Same for chrome check the version and install
+6. elements:
+  a . class name
+  b. ID
+  c. name
+  d. tag name
+  e. css selector
+  f. link text
+  g. partial link text
+  h. xpath
+  
+7. WebElement - interface
+superinterfaces -SearchContent, TakesScreenshot  
+
+Methods: 
+clear()
+click()
+submit()
+findElement()
+findElements()
+getAttribute()
+getCssValue()
+getText()
+sendKeys()
+isDisplayed()
+isEnabled()
+getLocation()
+isSelected()
+getSize()
+getTagName()
+
+8 . We can evern test our own html code  in webapp folder and give the link in get
+9 
+Select s= new Select(dropdown); // wrapper classs in which we are wrapping an object and giving to another class
+
+
+Selenium Server:
+
+1.download the selenium stand alone server from selenium hq 
+2.run it in cmd prompt 
+java -jar filename.jar [-role hub(optional for hub)]
+
+WebDriver driver = new RemoteWebDriver(new URL("http://localhost:4444/wd/hub"), DesiredCapabilities.chrome());
+		runs remotely
+4.grid configuration - parallel execution
+java -jar selenium-server-standalone-3.141.59.jar -role node -hub http://192.168.43.84:4444/grid/register/ [-port 5556] 
+optional to change port but have to change if multiple nodes are created 
+---> node creation 
+
+
+page object model:
+
+		
