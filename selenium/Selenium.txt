@@ -1,3 +1,7 @@
+
+Automated Web Testing with Selenium and WebDriver Using Java
+by Bryan Hansen
+
 Selenese script - Selenium IDE code - converts to java code if we copy paste
 
 Architecture - 
@@ -96,4 +100,114 @@ optional to change port but have to change if multiple nodes are created
 
 page object model:
 
+	provide abstraction	
+
+
+                           Java: BDD with Cucumber and Gherkin Getting Started
+						   
+						 
+business -> BA(business analyst)--> uses JIRA project management tool-> develops the code-> testers test the code
+(has test plans they derive from the document from BA) -> delivers the application to business		
+
+
+
+BDD(behaviour driven development):(business,developer,tester)
+
+1.discovery phase - teams talks on how feature works and how it would benifit the business
+2. formulate phase - written in cucumber (executable specifications - given, when , then )
+3. automate phase - converted executable specifications to automation 
+4. validate phase - validated with the user . as it is written in the same language as the specifications the business can understand
+
+before sprint starts - sprint planning (business,developer,tester) _ selects the most valuable thing to do next from product backlog- 
+writes examples until they understand (example mapping , feature mapping , writing down in tables)-
+ story is added to next sprint - tester turns these into gherkin - then goes to sprint backlog 
+
+Gherkin:
+
+business readable notation for executable specifications
+
+cucumber(glue code) - software tool to run this executable 
+converts gherkin to automation
+
+feature :
+
+Feature: (description) - can have multiple scenarios 
+Background: [optional] can be used when you want to execute this line for all scenarios in the feature. Ran at the start of each scenario 
+Given 
+Scenario : (scenario description)
+Given (preconditions)  (state of the system at the start of the scenario)
+And
+When(where the actual opeeration occurs)
+Then(outcome)
+But/And
+
+Scenario Outline:(multiple scenaios using one scenario)
+Given add <Heading1> from <Heading2>
+when
+then
+
+Examples:
+|Heading 1|Heading 2|
+|Value11|value12|
+|value21|value22|
+
+Test runner:
+
+@RunWith(Cucumber.class) - tells java to run this test as cucumber test 
+@CucumberOptions(plugin={"pretty","html:target/cucumber"},
+glue="com.testing.stepDefs",
+features= "classpath:features") [tells java to look in resources/features]
+public class testRunner{} 
+				 
+				 
+Environment need: JDK 8 or high needed , Maven or gradle (build tool), IDE
+
+cucumber plugin - http://cucumber.github.com/cucumber-eclipse/update-site in install new software		
+structure of Maven project:
+
+project 
+    src 
+	    main - application code
+	test
+	    java - step defs
+		       testRunner
+		resources - feature files 
 		
+	pom.xml	
+		 
+		 
+dependencies required : cucumber-java,cucumber-junit,assertj-core,junit		 
+
+Cucumber expression:
+
+{int} {string} {word} {float} - pass a parameter, word is single word without white space and ""
+
+{} -matches anything
+
+Regular expressions: 
+
+^ - start of the string
+$ end of string
+(.*) - 0 or more
+(.+) - 1or more 
+s?he - 0 or 1 matches she or he
+(?:order|orderd) - does not get a paramter
+\\d+-digit 
+\\w+-words
+
+
+And I do the following order:
+|apple |
+|banana|
+
+---->method will have a parameter of list of strings - List<String> 
+
+Annd I add following to menu:
+|apple|20|
+|banana|30|
+
+-------> List<Map<String,String>>  - each map is a single line in the 
+
+Map<String,Integer> - it takes first one as key and the next one as value
+
+serenity is used to convert feature to documentations - check in the project
